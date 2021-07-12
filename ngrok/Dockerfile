@@ -2,7 +2,7 @@ FROM alpine:3.12
 MAINTAINER Werner Beroux <werner@beroux.com>
 
 # https://github.com/sgerrand/alpine-pkg-glibc
-ARG GLIBC_VERSION=2.31-r0
+ARG GLIBC_VERSION=2.26-r0
 
 RUN set -x \
  && apk add --no-cache -t .deps ca-certificates \
