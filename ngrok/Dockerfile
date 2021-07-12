@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.9.2
 MAINTAINER Werner Beroux <werner@beroux.com>
 
 # https://github.com/sgerrand/alpine-pkg-glibc
