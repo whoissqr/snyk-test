@@ -40,7 +40,6 @@ pipeline {
             steps {
             sh script: "docker build -t hello-tomcat .", label: "Docker build"
             sh script: "snyk-alpine container monitor hello-tomcat --file=Dockerfile --project-name=snyk-container", label: "scan image"
-            sh script: "snyk-alpine container monitor docker-archive:ngrok/ngrok.tar --project-name=snyk-container-tar", label: "scan image"
             }
         }
         
