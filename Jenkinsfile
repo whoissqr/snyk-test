@@ -31,7 +31,7 @@ pipeline {
         }
         stage('SNYK IaC') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
                     sh script: "snyk-alpine iac test ec2.yml --org=dummy-org-o53", label: "scan EC2 config"
                 }
             }
