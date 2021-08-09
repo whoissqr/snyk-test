@@ -21,7 +21,7 @@ pipeline {
 
         stage('SNYK SCA') {
             steps {
-                sh script: "snyk-alpine config set org=dummy-org-o53", label: "set SNYK ORG"
+                sh script: "snyk-alpine config set org=snyk-jenkins", label: "set SNYK ORG"
                 sh script: "npm install --no-audit --no-fund", label: "install dep"
                 snykSecurity additionalArguments: '''--all-projects --remote-repo-url=https://github.com/whoissqr/snyk-test''', \
                     failOnIssues: false, \
@@ -32,7 +32,7 @@ pipeline {
         stage('SNYK IaC') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
-                    sh script: "snyk-alpine iac test ec2.yml --org=dummy-org-o53", label: "scan EC2 config"
+                    sh script: "snyk-alpine iac test ec2.yml --org=snyk-jenkins", label: "scan EC2 config"
                 }
             }
         }
