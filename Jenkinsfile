@@ -16,12 +16,12 @@ pipeline {
         stage('Auth') {
             steps {
                 sh script: "snyk-alpine config set api=$snyk_api_token"
+                sh script: "snyk-alpine config set org=snyk-jenkins", label: "set SNYK ORG"
             }
         }
 
         stage('SNYK SCA') {
-            steps {
-                sh script: "snyk-alpine config set org=snyk-jenkins", label: "set SNYK ORG"
+            steps {             
                 sh script: "npm install --no-audit --no-fund", label: "install dep"
                 snykSecurity additionalArguments: '''--all-projects --remote-repo-url=https://github.com/whoissqr/snyk-test''', \
                     failOnIssues: false, \
