@@ -2,7 +2,7 @@ pipeline {
    agent {
         docker {
             image 'snyk/snyk-cli:npm'
-            args '-e "USER_ID=jenkins-snyk" -e "MONITOR=true"'
+            args '-e "SNYK_TOKEN=8a86a27b-0a62-474b-a341-648c7b274ecf" -e "USER_ID=jenkins-snyk" -e "MONITOR=true"'
         }
     }
 
